@@ -1,40 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VCF to XLSX Converter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VCF to XLSX</title>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405912821850104"
-     crossorigin="anonymous"></script>
-  <style>
-    /* Basic styling for demonstration */
-    body { font-family: sans-serif; padding: 2em; }
-    #dropzone { border: 2px dashed #ccc; padding: 20px; text-align: center; margin-bottom: 1em; }
-    #dropzone.dragover { border-color: #333; }
-    .hidden { display: none; }
-  </style>
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
-
-  <h1>VCF to Excel Converter</h1>
-
-  <div id="dropzone">
-    <p>Drag & drop a .vcf file here, or click to select a file.</p>
-    <input type="file" id="fileInput" accept=".vcf,.vcard" style="display: none;">
-  </div>
-
-  <button id="convertBtn" disabled>Convert to Excel</button>
-
-  <p id="status"></p>
-
-  <div id="preview"></div>
-
-  <a id="downloadLink" class="hidden">Download Excel File</a>
-
-  <!-- Load XLSX library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <!-- Your application script -->
-  <script src="/app.js"></script>
-
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>
