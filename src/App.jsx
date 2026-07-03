@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { Link, Route, Routes, NavLink } from 'react-router-dom';
 import * as XLSX from 'xlsx';
 
@@ -237,10 +237,12 @@ export default function App() {
       </header>
 
       <main className="app-shell">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/vcf-to-xlsx" element={<VcfToXlsxPage />} />
-        </Routes>
+        <Suspense fallback={<div className="page"><p>جاري التحميل...</p></div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/vcf-to-xlsx" element={<VcfToXlsxPage />} />
+          </Routes>
+        </Suspense>
       </main>
     </>
   );

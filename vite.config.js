@@ -12,4 +12,30 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    // تحسين الأداء - Performance optimization
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // حذف console.log في الإنتاج
+        drop_debugger: true,
+      },
+    },
+    // تقسيم الكود لتحسين LCP
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'xlsx': ['xlsx'],
+        },
+      },
+    },
+    // تحسين حجم الملفات
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+  },
+  // تحسين الأداء العام
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'xlsx'],
+  },
 });

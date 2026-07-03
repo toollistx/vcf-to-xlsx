@@ -184,21 +184,24 @@ function handleFileSelection(file) {
   convertBtn.disabled = false;
   setStatus(`Loaded ${file.name}.`);
 
-  const reader = new FileReader();
-  reader.onload = (event) => {
-    try {
+  try {
+    const reader = new FileReader();
+    reader.onload = (event) => {
       contacts = parseVCF(event.target.result);
       renderPreview();
       if (!contacts.length) {
         setStatus('The file was read, but no contacts were found.', true);
       }
-    } catch (error) {
-      setStatus(`Could not parse the VCF file: ${error.message}`, true);
-      contacts = [];
-      renderPreview();
-    }
-  };
-  reader.readAsText(file);
+    };
+    reader.onerror = () => {
+      setStatus(`Error reading file: ${reader.error.message}`, true);
+    };
+    reader.readAsText(file);
+  } catch (error) {
+    setStatus(`Could not process the file: ${error.message}`, true);
+    contacts = [];
+    renderPreview();
+  }
 }
 
 fileInput.addEventListener('change', (event) => {
