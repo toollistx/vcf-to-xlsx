@@ -14,13 +14,7 @@ export default defineConfig({
   },
   build: {
     // تحسين الأداء - Performance optimization
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // حذف console.log في الإنتاج
-        drop_debugger: true,
-      },
-    },
+    minify: 'esbuild',
     // تقسيم الكود لتحسين LCP
     rollupOptions: {
       output: {
